@@ -76,7 +76,7 @@ The constructor of PadoNetworkStorageClient.
 ```typescript
 import {padonetwork} from "@padolabs/pado-ao-sdk/";
 
-const padoNetworkStorageClient = new padonetwork.PadoNetworkStorageClient('arweave', true);
+const padoNetworkClient = new padonetwork.PadoNetworkClient('arweave', true);
 ```
 
 
@@ -100,7 +100,7 @@ Encrypt data and upload encrypted data to AR. The combination of encryptData and
   import { readFileSync } from "node:fs";
   import {padonetwork} from "@padolabs/pado-ao-sdk/";
 
-  const padoNetworkStorageClient = new padonetwork.PadoNetworkStorageClient('arweave', true);
+  const padoNetworkClient = new padonetwork.PadoNetworkClient('arweave', true);
  
   
   const extParam = {
@@ -115,7 +115,7 @@ Encrypt data and upload encrypted data to AR. The combination of encryptData and
   let data = new Uint8Array([1, 2, 3, 4, 5, 6, 7, 8]);
   let dataTag = { "testtagkey": "testtagvalue" };
   let priceInfo = { price: "1", symbol: "AOCRED" };
-  const dataId = await padoNetworkStorageClient.uploadData(data, dataTag, priceInfo, wallet ,extParam);
+  const dataId = await padoNetworkClient.uploadData(data, dataTag, priceInfo, wallet ,extParam);
   console.log(`DATAID=${dataId}`);
   ```
 
@@ -136,7 +136,7 @@ Encrypt data.
 
   ```typescript
   import {padonetwork} from "@padolabs/pado-ao-sdk/";
-  const padoNetworkStorageClient = new padonetwork.PadoNetworkStorageClient('arweave', true);
+  const padoNetworkStorageClient = new padonetwork.PadoNetworkClient('arweave', true);
 
   let data = new Uint8Array([1, 2, 3, 4, 5, 6, 7, 8]);
   const encryptedData = await padoNetworkStorageClient.encryptData(data);
@@ -166,7 +166,7 @@ Submit encrypted data to storage server.
   import { readFileSync } from "node:fs";
   import {padonetwork} from "@padolabs/pado-ao-sdk/";
 
-  const padoNetworkStorageClient = new padonetwork.PadoNetworkStorageClient('arweave', true);
+  const padoNetworkClient = new padonetwork.PadoNetworkClient('arweave', true);
  
   
   
@@ -183,9 +183,20 @@ Submit encrypted data to storage server.
   let dataTag = { "testtagkey": "testtagvalue" };
   let priceInfo = { price: "1", symbol: "AOCRED" };
   const encryptedData = await encryptData(data);
-  const dataId = await padoNetworkStorageClient.submitData(encryptedData, dataTag, priceInfo, wallet ,extParam);
+  const dataId = await padoNetworkClient.submitData(encryptedData, dataTag, priceInfo, wallet ,extParam);
   console.log(`DATAID=${dataId}`);
   ```
+#### listData
+
+#### generateKey
+
+#### submitTask
+
+#### getResult
+
+#### submitTaskAndGetResult
+
+#### getComputationPrice
   
 
 #### getData
@@ -201,54 +212,6 @@ Get the encrypted data from storage server.
 
 * **Example:**
 
-
-### PadoNetworkContractClient
-Clients for different on-chain contracts
-#### constructor
-The constructor of PadoNetworkContractClient.
-
-* **Parameters:**
-  * `chains:array<string>`  chains that you want to operate.
-  * `isTestnet: Boolean` whether is testnet.
-* **Returns:**
-
-* **Example:**
-```typescript
-import {padonetwork} from "@padolabs/pado-ao-sdk/";
-
-const padoNetworkStorageClient = new padonetwork.PadoNetworkContractClient(['ethereum', 'ao'], true);
-```
-
-#### addWhiteList
-
-
-#### nodes
-
-#### deleteNode
-
-#### update
-
-#### registernode
-
-#### registerdata
-
-#### submit
-
-#### getAllTasks
-
-#### getCompletedTasks
-
-#### getCompletedTasksById
-
-#### reportResult
-
-#### getComputationPrice
-
-#### getPendingTasks
-
-#### allData
-
-#### getDataById
 
 ## Building
 
